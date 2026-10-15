@@ -66,6 +66,17 @@ def test_daily_max_integers():
     # Need to use Numpy testing functions to compare arrays
     npt.assert_array_equal(daily_max(test_input), test_result)
 
+@pytest.mark.parametrize(
+        "test, expected",
+        [
+            ([ [0, 0], [0, 0], [0, 0] ], [0, 0]),
+            ([ [1, 2], [3, 4], [5, 6] ], [5, 6]),
+        ]
+)
+def test_daily_max(test, expected):
+    from inflammation.models import daily_max
+    npt.assert_array_equal(daily_max(test), np.array(expected))
+
 def test_daily_min_zeros():
     """Test that min function works for an array of zeros."""
     from inflammation.models import daily_min
@@ -89,6 +100,17 @@ def test_daily_min_integers():
 
     # Need to use Numpy testing functions to compare arrays
     npt.assert_array_equal(daily_min(test_input), test_result)
+
+@pytest.mark.parametrize(
+        "test, expected",
+        [
+            ([ [0, 0], [0, 0], [0, 0] ], [0, 0]),
+            ([ [1, 2], [3, 4], [5, 6] ], [1, 2]),
+        ]
+)
+def test_daily_min(test, expected):
+    from inflammation.models import daily_min
+    npt.assert_array_equal(daily_min(test), np.array(expected))
 
 def test_daily_min_string():
     """Test for TypeError when passing strings"""
