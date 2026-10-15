@@ -40,6 +40,8 @@ def patient_normalise(data):
 
     Negative values are rounded to 0.
     """
+    if np.any(data < 0):
+        raise ValueError('Inflammation values should not be negative')
     max = np.nanmax(data, axis=1) # nanmax is like max, but it ignores nan values.
     with np.errstate(invalid="ignore", divide="ignore"): # ignore runtime warnings related to division and validity
         normalised = data / max[:, np.newaxis]
