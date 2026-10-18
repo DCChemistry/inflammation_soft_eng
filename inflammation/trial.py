@@ -5,10 +5,16 @@ class Patient:
     def __init__(self, id, inflammation_scores:list):
         self.id = id
         self.inflammation_scores = inflammation_scores
+    
+    @property
     def data_mean(self):
         return np.mean(self.inflammation_scores)
+
+    @property
     def data_max(self):
         return np.max(self.inflammation_scores)
+
+    @property
     def data_min(self):
         return np.min(self.inflammation_scores)
 
