@@ -25,6 +25,12 @@ class Trial:
         """
         return np.loadtxt(fname=filename, delimiter=',')
 
+    def get_patient(self, id):
+        """Get a Patient object by data row. The id of the object is the
+        same as the row number."""
+        patient = Patient(id, self.data[id, :])
+        return patient
+
     @property
     def daily_mean(self):
         """Calculate the daily mean of a 2d inflammation data array."""
