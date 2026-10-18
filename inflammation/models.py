@@ -49,3 +49,14 @@ def patient_normalise(data):
     normalised[np.isnan(normalised)] = 0 # use isnan to get a mask to set nans to 0
     normalised[normalised < 0] = 0 # any negative values are rounded to 0
     return normalised
+
+class Patient:
+    def __init__(self, id, inflammation_scores:list):
+        self.id = id
+        self.inflammation_scores = inflammation_scores
+    def data_mean(self):
+        return np.mean(self.inflammation_scores)
+    def data_max(self):
+        return np.max(self.inflammation_scores)
+    def data_min(self):
+        return np.min(self.inflammation_scores)
